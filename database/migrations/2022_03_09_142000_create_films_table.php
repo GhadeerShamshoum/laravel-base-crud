@@ -20,7 +20,7 @@ class CreateFilmsTable extends Migration
             $table->string("thumb")->nullable();
             $table->float("price",5,2);
             $table->string("series",80);
-            $table->dateTime("sale_date",0);
+            $table->date("sale_date");
             $table->string("type",20);
             $table->timestamps();
         });
