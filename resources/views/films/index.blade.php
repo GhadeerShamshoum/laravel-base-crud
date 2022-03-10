@@ -29,7 +29,7 @@
           <form action="{{route("films.destroy", $film->id)}}" method="POST">
               @csrf
               @method("DELETE")
-              <button type="submit" class="btn btn-danger m-4">Delete</button>
+              <button type="submit" class="btn btn-danger m-4" onclick="return confirm('Are you sure wwant to delete this item?')">Delete</button>
           </form>
         </div>
       </td>
