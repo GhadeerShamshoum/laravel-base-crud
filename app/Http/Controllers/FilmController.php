@@ -34,23 +34,23 @@ class FilmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Film $film)
     {
         $data = $request->all();
 
-        $newFilm = new Film();
-        $newFilm->title = $data["title"];
-        $newFilm->description = $data["description"];
+        $film = new Film();
+        $film->title = $data["title"];
+        $film->description = $data["description"];
         if(!empty($data["thumb"])){
-            $newFilm->thumb = $data["thumb"];
+            $film->thumb = $data["thumb"];
         }
-        $newFilm->price = $data["price"];
-        $newFilm->series = $data["series"];
-        $newFilm->sale_date = $data["sale_date"];
-        $newFilm->type = $data["type"];
-        $newFilm->save();
+        $film->price = $data["price"];
+        $film->series = $data["series"];
+        $film->sale_date = $data["sale_date"];
+        $film->type = $data["type"];
+        $film->save();
 
-        return redirect()->route('films.show', $newFilm->id);
+        return redirect()->route('films.show', $film->id);
 
     }
 
@@ -60,9 +60,9 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Film $film)
     {
-        $film = Film::find($id);
+       
         return view('films.show', compact('film'));
     }
 
@@ -72,9 +72,9 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Film $film)
     {
-        //
+        return view('films.edit', compact('film'));
     }
 
     /**
@@ -84,9 +84,23 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Film $film)
     {
-        //
+        $data = $request->all();
+
+        $film = new Film();
+        $film->title = $data["title"];
+        $film->description = $data["description"];
+        if(!empty($data["thumb"])){
+            $film->thumb = $data["thumb"];
+        }
+        $film->price = $data["price"];
+        $film->series = $data["series"];
+        $film->sale_date = $data["sale_date"];
+        $film->type = $data["type"];
+        $film->save();
+
+        return redirect()->route('films.show', $film->id);
     }
 
     /**
@@ -95,8 +109,12 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Film $film)
     {
-        //
+        $film->delete();
+
+        return redirect()->route('films.index');
+
+
     }
 }

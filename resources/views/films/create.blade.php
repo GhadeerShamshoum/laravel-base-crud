@@ -1,24 +1,24 @@
 @extends('layouts.base')
 
 @section('content')
-<h1 class="text-center">add a Comic film</h1>
+<h1 class="text-center">add Comic </h1>
 <form action="{{route("films.store")}}" method="POST">
   @csrf
-  <div class="form-group">
+  <div class="form-group col-md-12">
     <label for="title">title</label>
     <input type="text" class="form-control" id="title" name="title" placeholder="add title">
   </div>
   <div class="form-group col-md-12">
     <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" name="description">
+    <textarea rows="5" class="form-control" id="description" name="description" placeholder="add a description"></textarea>
   </div>
   <div class="form-group col-md-6">
     <label for="description">Image</label>
-    <input type="text" class="form-control" id="thumb" name="thumb" palceholder="add image link">
+    <input type="text" class="form-control" id="thumb" name="thumb" placeholder="add the image link here">
   </div>
-  <div class="form-group">
+  <div class="form-group col-md-12">
     <label for="price">Price</label>
-    <input type="number" min=0 class="form-control" id="price" name="price" placeholder="add the pricee here">
+    <input type="number" min=0 class="form-control" id="price" name="price" placeholder="add the price here">
   </div>
   <div class="form-group col-md-2">
     <label for="series">Series</label>
