@@ -25,7 +25,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+        return view('films.create');
     }
 
     /**
@@ -36,7 +36,22 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newFilm = new Film();
+        $newFilm->title = $data["title"];
+        $newFilm->description = $data["description"];
+        if(!empty($data["thumb"])){
+            $newFilm->thumb = $data["thumb"];
+        }
+        $newFilm->price = $data["price"];
+        $newFilm->series = $data["series"];
+        $newFilm->sale_date = $data["sale_date"];
+        $newFilm->type = $data["type"];
+        $newFilm->save();
+
+        return redirect()->route('films.show', $newFilm->id);
+
     }
 
     /**

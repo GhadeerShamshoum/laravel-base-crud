@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
+
+<a href="{{route("films.create")}}"><button type="button" class="btn  btn-warning">add</button></a>
     
 <table class="table">
   <thead>
@@ -21,9 +23,9 @@
       <th scope="row">{{$film->id}}</th>
       <td class="font-weight-bold">
           {{$film->title}}
-          <div class="mt-3 mb-3">
+        <div class="mt-3 mb-3">
           <a href="{{route("films.show", $film->id)}}"><button type="button" class="btn btn-primary">Select</button></a>
-          </div>
+        </div>
       </td>
       <td>{{$film->description}}</td>
       <td><img src="{{$film->thumb}}" alt="{{$film->title}}"></td>
