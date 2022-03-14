@@ -13,7 +13,7 @@
   </div>
   <div class="form-group col-md-12">
     <label for="description">Description</label>
-    <textarea rows="5" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="add a description" value="{{old("description")}}"></textarea>
+    <textarea rows="5" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="add a description">{{old("description")}}</textarea>
     @error('description')
       <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -42,10 +42,10 @@
   <div class="form-group col-md-2">
     <label for="sale_date">Choose sale date</label>
     <input type="date" id="sale_date" name="sale_date" class="@error('sale_date') is-invalid @enderror"
-        value="2022-03-10"
+    value="{{old("sale_date")}}"
         min="1990-01-01" max="2024-12-31">
     @error('sale_date')
-      <div class="alert alert-danger" value="{{old("sale_date")}}">{{ $message }}</div>
+      <div class="alert alert-danger" >{{ $message }}</div>
     @enderror
   </div>
   <div class="form-group col-md-2">
