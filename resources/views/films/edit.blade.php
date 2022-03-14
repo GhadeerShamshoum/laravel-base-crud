@@ -7,11 +7,11 @@
   @method('PUT')
   <div class="form-group col-md-12">
     <label for="title">title</label>
-    <input type="text" class="form-control" id="title" name="title" placeholder="add title" value="{{$film->name}}">
+    <input type="text" class="form-control" id="title" name="title" placeholder="add title" value="{{$film->title}}">
   </div>
   <div class="form-group col-md-12">
     <label for="description">Description</label>
-    <textarea rows="5" class="form-control" id="description" name="description" placeholder="add a description" value="{{$film->description}}"></textarea>
+    <textarea rows="5" class="form-control" id="description" name="description" placeholder="add a description">{{$film->description}}</textarea>
   </div>
   <div class="form-group col-md-6">
     <label for="description">Image</label>

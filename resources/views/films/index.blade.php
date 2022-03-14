@@ -34,7 +34,7 @@
         </div>
       </td>
       <td>{{$film->description}}</td>
-      <td><img class="max-width:20%" src="{{$film->thumb}}" alt="{{$film->title}}"></td>
+      <td class="col-3"><img class="imgcontainer col-10" src="{{$film->thumb}}" alt="{{$film->title}}"></td>
       <td>{{$film->price}}</td>
       <td>{{$film->series}}</td>
       <td class="text-nowrap">{{$film->sale_date}}</td>

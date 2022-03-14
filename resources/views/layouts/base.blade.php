@@ -9,8 +9,10 @@
 </head>
 <body>
     <h1 class="font-weight-bold text-uppercase text-danger m-3 text-center bg-info p-5">Comics</h1>
-    <div class="container">
-        @yield('content')
-    </div>
+    <main>
+        <div class="container">
+            @yield('content')
+        </div>
+</main>
 </body>
 </html>
