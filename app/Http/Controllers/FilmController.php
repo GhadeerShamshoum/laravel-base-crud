@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Film;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class FilmController extends Controller
@@ -36,6 +37,20 @@ class FilmController extends Controller
      */
     public function store(Request $request, Film $film)
     {
+        $request->validate([
+            "title"=>"required|string|max:80|unique:films",
+            "description"=>"required|string",
+            "image"=>"nullable|url",
+            "price"=>"numeric",
+            "series"=>"required|string|max:80",
+            "sale_date"=>"required|date",
+
+            "type"=>[
+                "required",
+                Rule::in(['comic book','graphic novel'])
+            ], 
+        ]);
+        // numeric|between:0,99.99 FLOAT
         $data = $request->all();
 
         $film = new Film();
@@ -49,6 +64,17 @@ class FilmController extends Controller
         $film->sale_date = $data["sale_date"];
         $film->type = $data["type"];
         $film->save();
+
+        //othersolutions: (check model)
+        //(1)
+        // $newProduct = new Product();
+        // $newProduct->fill($data);
+        // $newProduct->save();
+
+
+        //(2)
+        //$newProduct = Product::create($data);
+
 
         return redirect()->route('films.show', $film->id);
 
@@ -86,6 +112,19 @@ class FilmController extends Controller
      */
     public function update(Request $request, Film $film)
     {
+        $request->validate([
+            "title"=>"required|string|max:80|unique:films,title,{$film->id}",
+            "description"=>"required|string",
+            "image"=>"nullable|url",
+            "price"=>"numeric",
+            "series"=>"required|string|max:80",
+            "sale_date"=>"required|date",
+
+            "type"=>[
+                "required",
+                Rule::in(['comic book','graphic novel'])
+            ], 
+        ]);
         $data = $request->all();
 
         $film = new Film();
